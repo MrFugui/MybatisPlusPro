@@ -1,6 +1,5 @@
 package com.wangfugui.apprentice.controller;
 
-import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
@@ -80,13 +79,13 @@ public class BaseController<S extends IService<E>, E> {
         QueryWrapper<E> queryWrapper = new QueryWrapper<>();
         //升序
         String asc = pageParamDto.getAsc();
-        if (!StrUtil.isEmpty(asc) && !"null".equals(asc)) {
+        if (!ObjectUtils.isEmpty(asc) && !"null".equals(asc)) {
             String[] split = asc.split(",");
             queryWrapper.orderByAsc(split);
         }
         //降序
         String desc = pageParamDto.getDesc();
-        if (!StrUtil.isEmpty(desc) && !"null".equals(desc)) {
+        if (!ObjectUtils.isEmpty(desc) && !"null".equals(desc)) {
             String[] split = desc.split(",");
             queryWrapper.orderByDesc(split);
         }
